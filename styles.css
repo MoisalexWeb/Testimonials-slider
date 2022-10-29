@@ -1,0 +1,220 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+:root {
+	--dark-blue: hsl(240, 38%, 20%);
+	--grayish-blue: hsl(240, 18%, 77%);
+}
+
+::selection {
+	background-color: var(--grayish-blue);
+	color: var(--dark-blue);
+}
+
+body {
+	font-size: 20px;
+	font-family: sans-serif;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url(./images/pattern-curve.svg);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	background-size: contain;
+}
+
+main {
+	width: 100%;
+}
+
+.cards__container {
+	width: 90%;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px 0;
+	overflow: hidden;
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+}
+
+.card {
+	max-width: 400px;
+	grid-column: 1/2;
+	grid-row: 1/-1;
+	opacity: 0;
+	pointer-events: none;
+	overflow: hidden;
+	transition: opacity 0.5s ease;
+	justify-self: center;
+}
+
+.active {
+	opacity: 1;
+	pointer-events: unset;
+}
+
+.img-container {
+	width: 100%;
+	height: 350px;
+	display: flex;
+	overflow: hidden;
+	background-image: url(./images/pattern-bg.svg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.profile-img {
+	display: block;
+	width: 85%;
+	height: 80%;
+	margin: auto;
+	object-fit: cover;
+	object-position: top center;
+	border-radius: 5px;
+	box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+.card__texts {
+	margin-top: 15px;
+	padding-top: 30px;
+	text-align: center;
+	background-image: url(./images/pattern-quotes.svg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 70px;
+}
+
+.card-p {
+	color: var(--dark-blue);
+	font-weight: 300;
+}
+
+.card-name {
+	color: var(--dark-blue);
+	font-size: 22px;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.card-profession {
+	color: var(--grayish-blue);
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.buttons {
+	position: absolute;
+	top: 320px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	width: 100px;
+	background-color: #fff;
+	border-radius: 40px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.btn {
+	border: none;
+	background: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.arrow {
+	width: 15px;
+	height: 20px;
+	cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) {
+	body {
+		font-size: 22px;
+		background-size: 80% 150px;
+	}
+
+	.card {
+		width: 100%;
+		max-width: 1000px;
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(2,1fr);
+		grid-template-rows: 1fr;
+	}
+
+	.img-container {
+		grid-column: 2/3;
+		grid-row: 1/-1;
+	}
+
+	.buttons {
+		top: initial;
+		bottom: 30px;
+		left: 55%;
+		transform: translateX(0);
+	}
+
+	.profile-img {
+		transform: translateX(-30px);
+	}
+
+	.card__texts {
+		text-align: left;
+	}/*
+
+	.card-name, .card-profession {
+		display: inline-block;
+	}*/
+}
+
+
+@media screen and (min-width: 1024px) {
+	body {
+		font-size: 26px;
+	}
+
+	.profile-img {
+		object-fit: contain;
+		width: auto;
+	}
+
+	.card-name, .card-profession {
+		display: inline-block;
+		font-size: 18px;
+	}
+
+	.card-profession {
+		font-size: 17px;
+		margin-left: 10px;
+	}
+}
